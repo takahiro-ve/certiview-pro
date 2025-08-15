@@ -14,7 +14,83 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      certifications: {
+        Row: {
+          category: string | null
+          created_at: string
+          current_hours: number | null
+          exam_date: string | null
+          id: string
+          name: string
+          status: string | null
+          target_hours: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          current_hours?: number | null
+          exam_date?: string | null
+          id?: string
+          name: string
+          status?: string | null
+          target_hours?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          current_hours?: number | null
+          exam_date?: string | null
+          id?: string
+          name?: string
+          status?: string | null
+          target_hours?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      study_sessions: {
+        Row: {
+          certification_id: string
+          created_at: string
+          duration: number
+          id: string
+          note: string | null
+          session_date: string | null
+          user_id: string
+        }
+        Insert: {
+          certification_id: string
+          created_at?: string
+          duration: number
+          id?: string
+          note?: string | null
+          session_date?: string | null
+          user_id: string
+        }
+        Update: {
+          certification_id?: string
+          created_at?: string
+          duration?: number
+          id?: string
+          note?: string | null
+          session_date?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_sessions_certification_id_fkey"
+            columns: ["certification_id"]
+            isOneToOne: false
+            referencedRelation: "certifications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
