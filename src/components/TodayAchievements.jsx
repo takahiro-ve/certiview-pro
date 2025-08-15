@@ -1,5 +1,5 @@
-import { todayAchievements } from "@/data/certifications";
-import { calculateTotalTime as calcTotal, formatTotalTime as formatTotal } from "@/utils/timeUtils";
+import { todayAchievements } from "../data/certifications.js";
+import { calculateTotalTime as calcTotal, formatTotalTime as formatTotal } from "../utils/timeUtils.js";
 
 const TodayAchievements = () => {
   const totalMinutes = calcTotal(todayAchievements);

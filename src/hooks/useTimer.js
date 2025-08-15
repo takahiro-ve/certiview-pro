@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { formatTime } from "@/utils/timeUtils";
+import { formatTime } from "../utils/timeUtils.js";
 
 export const useTimer = (initialTime = 0) => {
   const [timer, setTimer] = useState(initialTime);

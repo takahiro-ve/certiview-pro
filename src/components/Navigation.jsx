@@ -1,4 +1,4 @@
-import { tabs } from "@/data/certifications";
+import { tabs } from "../data/certifications.js";
 
 const Navigation = ({ activeTab, setActiveTab }) => {
   return (

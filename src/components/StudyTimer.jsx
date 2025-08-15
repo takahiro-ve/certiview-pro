@@ -1,5 +1,5 @@
-import Timer from "./Timer";
-import TodayAchievements from "./TodayAchievements";
+import Timer from "./Timer.jsx";
+import TodayAchievements from "./TodayAchievements.jsx";
 
 const StudyTimer = () => {
   return (

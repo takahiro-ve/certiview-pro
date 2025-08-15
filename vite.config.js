@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/certiview-pro/',
+  base: mode === 'production' ? '/certiview-pro/' : '/',
   server: {
     host: "::",
     port: 8080,

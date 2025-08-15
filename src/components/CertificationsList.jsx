@@ -1,5 +1,5 @@
-import { certifications } from "@/data/certifications";
-import CertificationCard from "./CertificationCard";
+import { certifications } from "../data/certifications.js";
+import CertificationCard from "./CertificationCard.jsx";
 
 const CertificationsList = () => {
   return (
