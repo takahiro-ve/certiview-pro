@@ -1,30 +1,31 @@
-import './index.css'
-
-try {
-  const rootElement = document.getElementById("root")
-  if (!rootElement) {
-    throw new Error("Root element not found")
+// IT資格進捗管理アプリケーション
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    const rootElement = document.getElementById("root")
+    if (!rootElement) {
+      throw new Error("Root element not found")
+    }
+    
+    // アプリケーションの初期化
+    initializeApp(rootElement)
+  } catch (error) {
+    console.error("Failed to render app:", error)
+    
+    // エラー表示用のDOM要素を作成
+    const errorContainer = document.createElement('div')
+    errorContainer.style.cssText = 'padding: 20px; text-align: center; font-family: Arial, sans-serif;'
+    
+    const errorTitle = document.createElement('h1')
+    errorTitle.textContent = 'アプリケーションの読み込みに失敗しました'
+    
+    const errorMessage = document.createElement('p')
+    errorMessage.textContent = 'ページを再読み込みしてください。'
+    
+    errorContainer.appendChild(errorTitle)
+    errorContainer.appendChild(errorMessage)
+    document.body.appendChild(errorContainer)
   }
-  
-  // アプリケーションの初期化
-  initializeApp(rootElement)
-} catch (error) {
-  console.error("Failed to render app:", error)
-  
-  // エラー表示用のDOM要素を作成
-  const errorContainer = document.createElement('div')
-  errorContainer.style.cssText = 'padding: 20px; text-align: center; font-family: Arial, sans-serif;'
-  
-  const errorTitle = document.createElement('h1')
-  errorTitle.textContent = 'アプリケーションの読み込みに失敗しました'
-  
-  const errorMessage = document.createElement('p')
-  errorMessage.textContent = 'ページを再読み込みしてください。'
-  
-  errorContainer.appendChild(errorTitle)
-  errorContainer.appendChild(errorMessage)
-  document.body.appendChild(errorContainer)
-}
+})
 
 function initializeApp(rootElement) {
   // ヘッダーの作成
@@ -36,6 +37,12 @@ function initializeApp(rootElement) {
   // DOMに追加
   rootElement.appendChild(header)
   rootElement.appendChild(mainContent)
+  
+  // フェードインアニメーション
+  setTimeout(() => {
+    header.classList.add('fade-in')
+    mainContent.classList.add('fade-in')
+  }, 100)
 }
 
 function createHeader() {
@@ -154,7 +161,7 @@ function createMainContent() {
 
 function createCertificationCard() {
   const card = document.createElement('div')
-  card.className = 'bg-card border border-border rounded-lg p-6'
+  card.className = 'bg-card border border-border rounded-lg p-6 card-modern'
   
   const title = document.createElement('h2')
   title.className = 'text-2xl font-semibold text-card-foreground mb-4'
@@ -187,7 +194,7 @@ function createCertificationCard() {
 
 function createStudyCard() {
   const card = document.createElement('div')
-  card.className = 'bg-card border border-border rounded-lg p-6'
+  card.className = 'bg-card border border-border rounded-lg p-6 card-modern'
   
   const title = document.createElement('h2')
   title.className = 'text-2xl font-semibold text-card-foreground mb-4'
@@ -205,7 +212,7 @@ function createStudyCard() {
   buttonContainer.className = 'mt-4 space-y-2'
   
   const startButton = document.createElement('button')
-  startButton.className = 'w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90'
+  startButton.className = 'w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors'
   startButton.textContent = '学習開始'
   startButton.addEventListener('click', startStudy)
   
@@ -223,4 +230,17 @@ function createStudyCard() {
 function startStudy() {
   alert('学習を開始します！')
   console.log('学習開始ボタンがクリックされました')
+  
+  // ボタンの状態を変更
+  const button = event.target
+  button.textContent = '学習中...'
+  button.disabled = true
+  button.className = 'w-full bg-secondary text-secondary-foreground py-2 px-4 rounded-md transition-colors'
+  
+  // 3秒後に元に戻す
+  setTimeout(() => {
+    button.textContent = '学習開始'
+    button.disabled = false
+    button.className = 'w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors'
+  }, 3000)
 }
