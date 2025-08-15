@@ -191,6 +191,91 @@ body {
   transform: translateY(-1px);
 }
 
+/* 学習開始ボタンスタイル */
+.study-button {
+  width: 100%;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.study-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.study-button:hover::before {
+  left: 100%;
+}
+
+.study-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  background: linear-gradient(135deg, hsl(var(--primary-light)) 0%, hsl(var(--primary)) 100%);
+}
+
+.study-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.study-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.study-button.studying {
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-dark)) 100%);
+  animation: pulse 2s infinite;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.button-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.study-button:hover .button-icon {
+  transform: scale(1.1);
+}
+
+.button-text {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* パルスアニメーション */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 /* アニメーション */
 @keyframes fadeIn {
   from {
@@ -212,6 +297,15 @@ body {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  
+  .study-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .button-content {
+    gap: 0.5rem;
   }
 }
 

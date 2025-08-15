@@ -209,11 +209,16 @@ function createStudyCard() {
   timeLabel.textContent = '学習時間'
   
   const buttonContainer = document.createElement('div')
-  buttonContainer.className = 'mt-4 space-y-2'
+  buttonContainer.className = 'mt-6'
   
   const startButton = document.createElement('button')
-  startButton.className = 'w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors'
-  startButton.textContent = '学習開始'
+  startButton.className = 'study-button'
+  startButton.innerHTML = `
+    <div class="button-content">
+      <span class="button-icon">🚀</span>
+      <span class="button-text">学習開始</span>
+    </div>
+  `
   startButton.addEventListener('click', startStudy)
   
   buttonContainer.appendChild(startButton)
@@ -232,15 +237,20 @@ function startStudy() {
   console.log('学習開始ボタンがクリックされました')
   
   // ボタンの状態を変更
-  const button = event.target
-  button.textContent = '学習中...'
+  const button = event.target.closest('.study-button')
+  const buttonText = button.querySelector('.button-text')
+  const buttonIcon = button.querySelector('.button-icon')
+  
+  buttonText.textContent = '学習中...'
+  buttonIcon.textContent = '⏳'
   button.disabled = true
-  button.className = 'w-full bg-secondary text-secondary-foreground py-2 px-4 rounded-md transition-colors'
+  button.classList.add('studying')
   
   // 3秒後に元に戻す
   setTimeout(() => {
-    button.textContent = '学習開始'
+    buttonText.textContent = '学習開始'
+    buttonIcon.textContent = '🚀'
     button.disabled = false
-    button.className = 'w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors'
+    button.classList.remove('studying')
   }, 3000)
 }
