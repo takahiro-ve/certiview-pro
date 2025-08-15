@@ -10,7 +10,9 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    react(),
+    react({
+      include: "**/*.{jsx,js}", // JSファイルでもJSXを処理
+    }),
   ],
   resolve: {
     alias: {
