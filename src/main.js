@@ -10,12 +10,20 @@ try {
   initializeApp(rootElement)
 } catch (error) {
   console.error("Failed to render app:", error)
-  document.body.innerHTML = `
-    <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
-      <h1>アプリケーションの読み込みに失敗しました</h1>
-      <p>ページを再読み込みしてください。</p>
-    </div>
-  `
+  
+  // エラー表示用のDOM要素を作成
+  const errorContainer = document.createElement('div')
+  errorContainer.style.cssText = 'padding: 20px; text-align: center; font-family: Arial, sans-serif;'
+  
+  const errorTitle = document.createElement('h1')
+  errorTitle.textContent = 'アプリケーションの読み込みに失敗しました'
+  
+  const errorMessage = document.createElement('p')
+  errorMessage.textContent = 'ページを再読み込みしてください。'
+  
+  errorContainer.appendChild(errorTitle)
+  errorContainer.appendChild(errorMessage)
+  document.body.appendChild(errorContainer)
 }
 
 function initializeApp(rootElement) {
