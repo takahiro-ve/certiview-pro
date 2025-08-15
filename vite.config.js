@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      include: "**/*.{jsx,js}", // JSファイルでもJSXを処理
+      include: "**/*.jsx", // JSXファイルのみを処理
     }),
   ],
   resolve: {
