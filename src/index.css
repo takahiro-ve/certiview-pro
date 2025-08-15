@@ -53,13 +53,6 @@
     --info: 14 165 233; /* #0ea5e9 - より落ち着いたブルー */
     --info-foreground: 255 255 255;
     
-    /* 控えめなグラデーション */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-dark)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-dark)) 100%);
-    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--accent)) 100%);
-    
     /* 控えめなシャドウ */
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
@@ -128,12 +121,6 @@
     --info: 14 165 233; /* #0ea5e9 - より落ち着いたブルー */
     --info-foreground: 255 255 255;
     
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-dark)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-dark)) 100%);
-    --gradient-card: linear-gradient(135deg, rgba(30,41,59,0.95) 0%, rgba(51,65,85,0.9) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--accent)) 100%);
-    
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -178,7 +165,6 @@
   /* 落ち着いたカードスタイル */
   .card-modern {
     @apply bg-card text-card-foreground rounded-lg border transition-all duration-200;
-    background: var(--gradient-card);
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(255, 255, 255, 0.05);
   }
@@ -208,17 +194,17 @@
   
   .btn-primary {
     @apply btn-modern text-primary-foreground focus:ring-primary;
-    background: var(--gradient-primary);
+    background: hsl(var(--primary));
   }
   
   .btn-secondary {
     @apply btn-modern text-secondary-foreground focus:ring-secondary;
-    background: var(--gradient-secondary);
+    background: hsl(var(--secondary));
   }
   
   .btn-accent {
     @apply btn-modern text-accent-foreground focus:ring-accent;
-    background: var(--gradient-accent);
+    background: hsl(var(--accent));
   }
   
   .btn-outline {
@@ -236,13 +222,13 @@
   
   .progress-fill {
     @apply h-full transition-all duration-500 ease-out rounded-full;
-    background: var(--gradient-secondary);
+    background: hsl(var(--secondary));
   }
   
   /* 通知スタイル */
   .notification-modern {
     @apply rounded-lg border-l-4 border-accent p-4;
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.05) 0%, hsl(var(--accent) / 0.02) 100%);
+    background: hsl(var(--accent) / 0.05);
   }
   
   /* 入力スタイル */
@@ -262,17 +248,17 @@
   
   .badge-primary {
     @apply badge-modern text-primary-foreground;
-    background: var(--gradient-primary);
+    background: hsl(var(--primary));
   }
   
   .badge-secondary {
     @apply badge-modern text-secondary-foreground;
-    background: var(--gradient-secondary);
+    background: hsl(var(--secondary));
   }
   
   .badge-accent {
     @apply badge-modern text-accent-foreground;
-    background: var(--gradient-accent);
+    background: hsl(var(--accent));
   }
   
   .badge-outline {
@@ -297,18 +283,12 @@
   }
   
   /* ユーティリティクラス */
-  .text-gradient-primary {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .text-primary {
+    color: hsl(var(--primary));
   }
   
-  .text-gradient-secondary {
-    background: var(--gradient-secondary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .text-secondary {
+    color: hsl(var(--secondary));
   }
   
   .shadow-glow {
